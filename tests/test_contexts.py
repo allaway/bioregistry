@@ -100,7 +100,11 @@ class TestContexts(unittest.TestCase):
             )
             for prefix in remapping:
                 # Currently this allows overwriting of existing prefixes
-                self.assertIn(prefix, _valid_remapping_prefixes)
+                self.assertIn(
+                    prefix,
+                    _valid_remapping_prefixes,
+                    msg=f"context {key} has prefix as a key that is not a valid Bioregistry prefix",
+                )
 
             _valid_custom_prefixes = set(
                 bioregistry.get_prefix_map(
